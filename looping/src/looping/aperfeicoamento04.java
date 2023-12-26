@@ -12,14 +12,8 @@ public class aperfeicoamento04 {
 
 	public static void main(String[] args) {
 		
-		String[]lista = {"Repeticão","Repeticão","Repeticão","Repeticão"};
-		
-		Usuario[] usuarios = {
-				new Usuario("Caio", 25, "Google"),
-				new Usuario("Tiago", 35, "Microsoft"),
-				new Usuario("Felipe", 30, "Apple")
-		};
-
+		String[]lista = {"Repeticão","Repeticão","Repeticão","Repeticão"};	     	     
+	     
 		System.out.println("Exercício 01");
 		escreverRepeticao(1, "Repetição");
 		escreverRepeticao(2, "Repetição");
@@ -37,19 +31,22 @@ public class aperfeicoamento04 {
 		escreverRepeticaoWhile("Repetição",50);
 		System.out.println("\n");
 		       
-		System.out.println("Exercicio 05");
+		System.out.println("Exercicio 02");
 		escreverRepeticaoForNumero(11);
 		System.out.println("\n");
 		
-		System.out.println("Exercicio 06");
+		System.out.println("Exercicio 03");
 		escreverRepeticaoForNumeroParImpar("IMPAR",11);
 		System.out.println("\n");
 		
-		System.out.println("Exercicio 06");
-		escrevaObjeto(usuarios);
+//		System.out.println("Exercicio 04");
+//		escrevaObjeto(usuarios);
+//		System.out.println("\n");
+		
+		System.out.println("Exercicio 04.2");
+		listaFilter("Apple",30);
 		System.out.println("\n");
 		  
-
 	}
 		
 		static void escreverRepeticao(int vezes, String conteudo) {
@@ -94,6 +91,21 @@ public class aperfeicoamento04 {
 		        }
 			}
 		}
+			
+			static void listaFilter(String trabalho,int numero) {
+				List<Usuario> usuarios = new ArrayList<>();
+			    usuarios.add(new Usuario("Caio",25,"Google"));
+			    usuarios.add(new Usuario("Tiago",35,"Microsoft"));
+			    usuarios.add(new Usuario("Felipe",30,"Apple"));
+			    usuarios.add(new Usuario("André",21,"Apple"));
+			    
+				List<String> nomesUsuariosAppleMais30 = usuarios.stream()
+		                .filter(usuario -> usuario.getEmpresa().equalsIgnoreCase(trabalho)&& usuario.getIdade()>=numero)
+		                .map(Usuario::getNome)               
+		                .collect(Collectors.toList());
+				System.out.println(nomesUsuariosAppleMais30);
+			}
+		
 		
 		static void escrevaObjeto(Usuario[] usuarios) {
 			for(Usuario usuario:usuarios) {
